@@ -59,8 +59,10 @@ The model was evaluated against a naive baseline (using previous day demand as p
 
 | Metric | Random Forest | Baseline |
 |--------|--------------|----------|
-| MAE | See notebook output | See notebook output |
-| RMSE | See notebook output | See notebook output |
+| MAE | 5.03 | 6.81 |
+| RMSE | 6.48 | 9.38 |
+
+That is 26.1% lower MAE and 30.9% lower RMSE than the baseline.
 
 ---
 
