@@ -2,7 +2,9 @@
 
 A machine learning pipeline that forecasts daily demand per ingredient and turns it into reorder recommendations.
 
-**Result:** a Random Forest cut forecast error by 26.1% (MAE) and 30.9% (RMSE) against a naive baseline.
+**Result on the sample data in this repo:** a Random Forest cut forecast error by 26.1% (MAE) and 30.9% (RMSE) against a naive baseline.
+
+This repo demonstrates the approach I used at Dosa Kitchen. The dataset is sample data, not the business's real records.
 
 ## Results
 The model was evaluated against a naive baseline (using previous day demand as prediction):
@@ -30,7 +32,7 @@ Restaurants commonly manage stock manually using spreadsheets, leading to over-o
 - **Evaluation:** MAE, RMSE vs naive baseline
 
 ## Dataset
-The dataset contains daily inventory records for a food service business with the following fields:
+`restaurant_inventory_data.csv` is sample data (150 rows, 5 ingredients) with the following fields:
 
 | Column | Description |
 |--------|-------------|
