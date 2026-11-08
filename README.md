@@ -1,25 +1,33 @@
-# Restaurant Inventory Demand Forecasting & Reorder Recommendation System
+# Restaurant Demand Forecasting and Reorder Recommendations
+
+A machine learning pipeline that forecasts daily demand per ingredient and turns it into reorder recommendations.
+
+**Result:** a Random Forest cut forecast error by 26.1% (MAE) and 30.9% (RMSE) against a naive baseline.
+
+## Results
+The model was evaluated against a naive baseline (using previous day demand as prediction):
+
+| Metric | Random Forest | Baseline |
+|--------|--------------|----------|
+| MAE | 5.03 | 6.81 |
+| RMSE | 6.48 | 9.38 |
+
+That is 26.1% lower MAE and 30.9% lower RMSE than the baseline.
 
 ## Project Overview
-An end-to-end machine learning pipeline that forecasts daily restaurant inventory demand and generates automated reorder recommendations — replacing manual spreadsheet-based stock management with a data-driven decision system.
+An end-to-end machine learning pipeline that forecasts daily restaurant inventory demand and generates automated reorder recommendations: replacing manual spreadsheet-based stock management with a data-driven decision system.
 
 **Pipeline:**
 Raw Data → Cleaning & EDA → Feature Engineering → Model Training → Evaluation → 7-Day Forecasting → Reorder Recommendations
 
----
-
 ## Problem Statement
 Restaurants commonly manage stock manually using spreadsheets, leading to over-ordering (waste) or under-ordering (stockouts). This project builds an ML-based solution that predicts daily demand per item and tells the management team exactly when and how much to reorder.
-
----
 
 ## Tech Stack
 - **Language:** Python 3
 - **Libraries:** Pandas, NumPy, Scikit-learn, Matplotlib
 - **Model:** Random Forest Regressor
 - **Evaluation:** MAE, RMSE vs naive baseline
-
----
 
 ## Dataset
 The dataset contains daily inventory records for a food service business with the following fields:
@@ -34,8 +42,6 @@ The dataset contains daily inventory records for a food service business with th
 | Seasonal_Factor | Demand multiplier based on season |
 | Waste_Percentage | Inventory loss/spoilage rate |
 
----
-
 ## Feature Engineering
 Time-series features created to capture demand patterns:
 
@@ -43,28 +49,12 @@ Time-series features created to capture demand patterns:
 - **Rolling averages:** 7-day and 14-day rolling mean demand
 - **Calendar features:** day of week, weekend flag, month, day of month
 
----
-
 ## Model
 **Random Forest Regressor** was chosen because:
 - Handles nonlinear demand relationships well
 - Works effectively on structured tabular data
 - Less prone to overfitting than a single decision tree
 - Naturally incorporates multiple feature types
-
----
-
-## Results
-The model was evaluated against a naive baseline (using previous day demand as prediction):
-
-| Metric | Random Forest | Baseline |
-|--------|--------------|----------|
-| MAE | 5.03 | 6.81 |
-| RMSE | 6.48 | 9.38 |
-
-That is 26.1% lower MAE and 30.9% lower RMSE than the baseline.
-
----
 
 ## Reorder Logic
 The reorder recommendation engine calculates:
@@ -76,8 +66,6 @@ Reorder point     = lead-time demand + safety stock
 Reorder quantity  = reorder point − current stock (if stock ≤ reorder point)
 ```
 
----
-
 ## How to Run
 
 1. Clone this repository
@@ -88,7 +76,7 @@ cd restaurant-inventory-forecasting
 
 2. Install required libraries
 ```bash
-pip install pandas numpy scikit-learn matplotlib
+pip install -r requirements.txt
 ```
 
 3. Open the notebook
@@ -98,19 +86,10 @@ jupyter notebook restaurant_inventory_forecasting.ipynb
 
 4. Run all cells from top to bottom
 
----
-
 ## Output Files Generated
-- `7_day_forecast_output.csv` — 7-day demand forecast per item
-- `reorder_recommendations_output.csv` — reorder action plan
-- `daily_usage_trends.png` — usage trend charts
-- `seasonal_pattern.png` — monthly demand pattern
-- `feature_importance.png` — model feature importance
-- `reorder_recommendations.png` — stock vs reorder point chart
-
----
-
-## Author
-**Premshakthi Sekar**  
-MSc Artificial Intelligence — Northumbria University  
-[LinkedIn](https://www.linkedin.com/in/premshakthi-sekar-a6a328156)
+- `7_day_forecast_output.csv`: 7-day demand forecast per item
+- `reorder_recommendations_output.csv`: reorder action plan
+- `daily_usage_trends.png`: usage trend charts
+- `seasonal_pattern.png`: monthly demand pattern
+- `feature_importance.png`: model feature importance
+- `reorder_recommendations.png`: stock vs reorder point chart
